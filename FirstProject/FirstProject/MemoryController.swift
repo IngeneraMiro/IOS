@@ -7,14 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController, RestartDelegation {
+class ViewController: UIViewController, someMethodsDelegation {
+    
+   override func viewDidLoad() {
+        super.viewDidLoad()
+        game.delegate = self
         
+    }
+    
+    func updateScorePoints(newScorePoints: Int) {
+        score = newScorePoints
+    }
+    
+    func updateFlippedCrdsCounter(counterIncrement: Int) {
+        flipCounter += counterIncrement
+    }
     
     lazy var game = Concentration(pair:(cardCollection.count+1)/2)
     
-    var flipCount = 0 {
+    var flipCounter = 0 {
         didSet {
-            flipCardLable.text = "Flips: \(flipCount)"
+            flipCardLable.text = "Flips: \(flipCounter)"
         }
     }
     var score = 0 {
@@ -28,7 +41,6 @@ class ViewController: UIViewController, RestartDelegation {
     
     
     @IBAction func restartTheGame(_ sender: UIButton) {
-        game.delegate = self
         game.gameRestart()
     }
     
@@ -36,9 +48,7 @@ class ViewController: UIViewController, RestartDelegation {
     
     @IBAction func cardTouch(_ sender: UIButton) {
         if let cardNumber = cardCollection.firstIndex(of: sender){
-            let tupleReturned = game.getCard(at: cardNumber)
-            flipCount += tupleReturned.0
-            score = tupleReturned.1
+            game.getCard(at: cardNumber)
             changeViewByModel()
         }else{
             print("there is a bug - no such card in collection")
@@ -57,13 +67,12 @@ class ViewController: UIViewController, RestartDelegation {
                 button.backgroundColor = card.cardIsMatched ? #colorLiteral(red: 1, green: 0.7006285493, blue: 0.1696278834, alpha: 0) : #colorLiteral(red: 1, green: 0.7006285493, blue: 0.1696278834, alpha: 1)
             }
         }
-        print(game.score)
     }
     
-    func restarting(){
+    func softwareRestartTheGame(){
         emoji.removeAll()
         pictures = Theme.getRandomTheme()
-        flipCount = 0
+        flipCounter = 0
         score = 0
         changeViewByModel()
     }

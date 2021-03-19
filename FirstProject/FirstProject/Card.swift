@@ -11,16 +11,16 @@ struct Card {
     
     var cardIsFaceUp = false
     var cardIsMatched = false
-    let cardUnicId : Int
+    let cardUniqueId : Int
     
-    static var unicIdFactory = 0
+    static var makeUniqueID = 0
     
-    static func getUnicId() -> Int{
-        unicIdFactory += 1
-        return unicIdFactory
+    static func getUniqueId() -> Int{
+        makeUniqueID += 1
+        return makeUniqueID
     }
     
     init() {
-        self.cardUnicId = Card.getUnicId()
+        self.cardUniqueId = Card.getUniqueId()
     }
 }

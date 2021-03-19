@@ -8,15 +8,15 @@
 import Foundation
 
 class Concentration {
-  weak  var delegate: RestartDelegation?
+    weak  var delegate: someMethodsDelegation?
     var cards = Array<Card>()
     var alreadyFlippedCards = Set<Int>()
     var score = 0
-    var card1: Int?, card2: Int?
+    var firstFlippedCard: Int?, secondFlippedCard: Int?
     
     var indexOfAlreadyOpenedCard : Int?
     
-    func getCard(at index: Int) -> (Int,Int){
+    func getCard(at index: Int){
         if !cards[index].cardIsMatched{
             if let matchIndex = indexOfAlreadyOpenedCard, matchIndex != index{
                 if cards[matchIndex].cardUnicId == cards[index].cardUnicId{
@@ -24,24 +24,23 @@ class Concentration {
                     cards[index].cardIsMatched = true
                     score += 2
                     alreadyFlippedCards.remove(cards[index].cardUnicId)
-                    card1 = nil
-                    card2 = nil
+                    firstFlippedCard = nil
+                    secondFlippedCard = nil
                 }else{
-                    if let firstRounded = card1{
+                    if let firstRounded = firstFlippedCard{
                         score += alreadyFlippedCards.contains(firstRounded) ? -1 : 0
-                        score += alreadyFlippedCards.contains(card2!) ? -1 : 0
+                        score += alreadyFlippedCards.contains(secondFlippedCard!) ? -1 : 0
                         score += alreadyFlippedCards.contains(cards[matchIndex].cardUnicId) ? -1 : 0
                         score += alreadyFlippedCards.contains(cards[index].cardUnicId) ? -1 : 0
                         alreadyFlippedCards.insert(firstRounded)
-                        alreadyFlippedCards.insert(card2!)
+                        alreadyFlippedCards.insert(secondFlippedCard!)
                         alreadyFlippedCards.insert(cards[matchIndex].cardUnicId)
                         alreadyFlippedCards.insert(cards[index].cardUnicId)
-                        card1 = nil
-                        card2 = nil
+                        firstFlippedCard = nil
+                        secondFlippedCard = nil
                     }else{
-                        card1 = cards[matchIndex].cardUnicId
-                        card2 = cards[index].cardUnicId
-                        
+                        firstFlippedCard = cards[matchIndex].cardUnicId
+                        secondFlippedCard = cards[index].cardUnicId
                     }
                 }
                 cards[index].cardIsFaceUp = true
@@ -54,12 +53,12 @@ class Concentration {
                 cards[index].cardIsFaceUp = true
                 indexOfAlreadyOpenedCard = index
             }
-            return (1,score)
+            
+            delegate?.updateFlippedCrdsCounter(counterIncrement: 1)
         }else{
-            return (0,score)
+            delegate?.updateFlippedCrdsCounter(counterIncrement: 0)
         }
-        
-    }
+        delegate?.updateScorePoints(newScorePoints: score)    }
     
     func gameRestart(){
         for index in cards.indices{
@@ -69,10 +68,10 @@ class Concentration {
         cards.shuffle()
         score = 0
         alreadyFlippedCards.removeAll()
-        card1 = nil
-        card2 = nil
+        firstFlippedCard = nil
+        secondFlippedCard = nil
         indexOfAlreadyOpenedCard = nil
-        delegate?.restarting()
+        delegate?.softwareRestartTheGame()
     }
     
     init(pair pairsOfCards: Int) {

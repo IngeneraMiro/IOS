@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol RestartDelegation: class {
-    func restarting()
+protocol someMethodsDelegation: class {
+    func softwareRestartTheGame()
+    func updateScorePoints(newScorePoints: Int)
+    func updateFlippedCrdsCounter(counterIncrement: Int)
 }
