@@ -45,7 +45,6 @@ class Concentration {
                 }
                 cards[index].cardIsFaceUp = true
                 indexOfAlreadyOpenedCard = nil
-                
             }else{
                 for flipIndex in cards.indices{
                     cards[flipIndex].cardIsFaceUp = false
@@ -53,12 +52,13 @@ class Concentration {
                 cards[index].cardIsFaceUp = true
                 indexOfAlreadyOpenedCard = index
             }
-            
             delegate?.updateFlippedCrdsCounter(counterIncrement: 1)
         }else{
             delegate?.updateFlippedCrdsCounter(counterIncrement: 0)
         }
-        delegate?.updateScorePoints(newScorePoints: score)    }
+        delegate?.updateScorePoints(newScorePoints: score)
+        delegate?.changeViewByModel()
+    }
     
     func gameRestart(){
         for index in cards.indices{
@@ -72,6 +72,7 @@ class Concentration {
         secondFlippedCard = nil
         indexOfAlreadyOpenedCard = nil
         delegate?.softwareRestartTheGame()
+        delegate?.changeViewByModel()
     }
     
     init(pair pairsOfCards: Int) {

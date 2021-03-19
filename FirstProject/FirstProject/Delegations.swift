@@ -11,4 +11,5 @@ protocol someMethodsDelegation: class {
     func softwareRestartTheGame()
     func updateScorePoints(newScorePoints: Int)
     func updateFlippedCrdsCounter(counterIncrement: Int)
+    func changeViewByModel()
 }

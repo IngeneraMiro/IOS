@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, someMethodsDelegation {
     
-   override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         game.delegate = self
         
@@ -37,8 +37,8 @@ class ViewController: UIViewController, someMethodsDelegation {
     }
     
     @IBOutlet weak var flipCardLable: UILabel!
-    @IBOutlet weak var scoreCounter: UILabel!
     
+    @IBOutlet weak var scoreCounter: UILabel!    
     
     @IBAction func restartTheGame(_ sender: UIButton) {
         game.gameRestart()
@@ -49,7 +49,6 @@ class ViewController: UIViewController, someMethodsDelegation {
     @IBAction func cardTouch(_ sender: UIButton) {
         if let cardNumber = cardCollection.firstIndex(of: sender){
             game.getCard(at: cardNumber)
-            changeViewByModel()
         }else{
             print("there is a bug - no such card in collection")
         }
@@ -74,7 +73,6 @@ class ViewController: UIViewController, someMethodsDelegation {
         pictures = Theme.getRandomTheme()
         flipCounter = 0
         score = 0
-        changeViewByModel()
     }
     
     var pictures = Theme.getRandomTheme()
