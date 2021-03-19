@@ -82,11 +82,11 @@ class ViewController: UIViewController, someMethodsDelegation {
     var emoji = [Int:String]()
     
     func emojiForCard(for card: Card) -> String {
-        if emoji[card.cardUnicId] == nil, !pictures.isEmpty {
+        if emoji[card.cardUniqueId] == nil, !pictures.isEmpty {
             let randomIndex = Int(arc4random_uniform(UInt32(pictures.count)))
-            emoji[card.cardUnicId] = pictures.remove(at: randomIndex)
+            emoji[card.cardUniqueId] = pictures.remove(at: randomIndex)
         }
-        return emoji[card.cardUnicId] ?? "?"
+        return emoji[card.cardUniqueId] ?? "?"
     }
     
     
