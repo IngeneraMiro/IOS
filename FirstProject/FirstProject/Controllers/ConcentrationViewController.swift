@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CincentrationViewController: UIViewController, someMethodsDelegation {
+class ViewController: UIViewController, someMethodsDelegation {
     
 //   ViewController life cycle
     override func viewDidLoad() {
