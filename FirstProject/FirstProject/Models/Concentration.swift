@@ -31,12 +31,12 @@ class Concentration {
                     secondFlippedCard = nil
                 }else{
                     //     if alredy fliped and now fliped cars don't match
-                    if let firstRounded = firstFlippedCard{
-                        score += alreadyFlippedCards.contains(firstRounded) ? -1 : 0
+                    if let veryFirstFlippedCard = firstFlippedCard{
+                        score += alreadyFlippedCards.contains(veryFirstFlippedCard) ? -1 : 0
                         score += alreadyFlippedCards.contains(secondFlippedCard!) ? -1 : 0
                         score += alreadyFlippedCards.contains(cards[matchedIndex].cardUniqueId) ? -1 : 0
                         score += alreadyFlippedCards.contains(cards[index].cardUniqueId) ? -1 : 0
-                        alreadyFlippedCards.insert(firstRounded)
+                        alreadyFlippedCards.insert(veryFirstFlippedCard)
                         alreadyFlippedCards.insert(secondFlippedCard!)
                         alreadyFlippedCards.insert(cards[matchedIndex].cardUniqueId)
                         alreadyFlippedCards.insert(cards[index].cardUniqueId)
