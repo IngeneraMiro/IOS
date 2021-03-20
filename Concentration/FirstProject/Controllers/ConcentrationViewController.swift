@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
-//  Memory
+//  ConcentrationViewController.swift
+//  Concentration
 //
 //  Created by Miroslav Shtregarski on 12.03.21.
 //
 
 import UIKit
 
-class ViewController: UIViewController, someMethodsDelegation {
+class ViewController: UIViewController, ConcentrationDelegateToViewController {
     
 //   ViewController life cycle
     override func viewDidLoad() {

@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  FirstProject
+//  Concentration
 //
 //  Created by Miroslav Shtregarski on 12.03.21.
 //

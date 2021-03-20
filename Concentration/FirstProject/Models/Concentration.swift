@@ -1,6 +1,6 @@
 //
-//  ConcentrationGame.swift
-//  FirstProject
+//  Concentration.swift
+//  Concentrtion
 //
 //  Created by Miroslav Shtregarski on 16.03.21.
 //
@@ -8,21 +8,21 @@
 import Foundation
 
 class Concentration {
-    weak  var delegate: someMethodsDelegation?
-    var cards = Array<Card>()
-    var alreadyFlippedCards = Set<Int>()
-    var score = 0
-    var firstFlippedCard: Int?, secondFlippedCard: Int?
+    weak var delegate: ConcentrationDelegateToViewController?
+    var cards: [Card] = []
+    private var alreadyFlippedCards = Set<Int>()
+    private var score = 0
+    private var firstFlippedCard: Int?, secondFlippedCard: Int?
     
-    var indexOfAlreadyOpenedCard : Int?
+    private var indexOfAlreadyOpenedCard : Int?
     
     func getCard(at index: Int){
         if !cards[index].cardIsMatched{
-            //   if picked card is not matched
+            //  # if picked card is not matched
             if let matchedIndex = indexOfAlreadyOpenedCard, matchedIndex != index{
-                //  if we alredy have one card flipped
+                // # if we alredy have one card flipped
                 if cards[matchedIndex].cardUniqueId == cards[index].cardUniqueId{
-                    //  if alredy fliped and now fliped cars match
+                    // # if alredy fliped and now fliped cars match
                     cards[matchedIndex].cardIsMatched = true
                     cards[index].cardIsMatched = true
                     score += 2
@@ -30,7 +30,7 @@ class Concentration {
                     firstFlippedCard = nil
                     secondFlippedCard = nil
                 }else{
-                    //     if alredy fliped and now fliped cars don't match
+                    // # if alredy fliped and now fliped cards don't match
                     if let veryFirstFlippedCard = firstFlippedCard{
                         score += alreadyFlippedCards.contains(veryFirstFlippedCard) ? -1 : 0
                         score += alreadyFlippedCards.contains(secondFlippedCard!) ? -1 : 0

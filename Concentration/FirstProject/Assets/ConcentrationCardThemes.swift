@@ -1,6 +1,6 @@
 //
 //  Theme.swift
-//  Memory
+//  Concentration
 //
 //  Created by Miroslav Shtregarski on 18.03.21.
 //

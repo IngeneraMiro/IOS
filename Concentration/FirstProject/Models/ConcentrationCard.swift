@@ -1,6 +1,6 @@
 //
-//  Card.swift
-//  FirstProject
+//  ConcentrationCard.swift
+//  Concentration
 //
 //  Created by Miroslav Shtregarski on 16.03.21.
 //
@@ -13,9 +13,9 @@ struct Card {
     var cardIsMatched = false
     let cardUniqueId : Int
     
-    static var makeUniqueID = 0
+    private static var makeUniqueID = 0
     
-    static func getUniqueId() -> Int{
+    private static func getUniqueId() -> Int{
         makeUniqueID += 1
         return makeUniqueID
     }
