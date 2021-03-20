@@ -56,16 +56,6 @@
                                     <action selector="cardTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E2D-X3-efm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-C7-bcp" colorLabel="IBBuiltInLabel-Green">
-                                <rect key="frame" x="305" y="240" width="86" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.68650386959999998" blue="0.13020897349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                <state key="normal" title="🕷"/>
-                                <connections>
-                                    <action selector="cardTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0a-fP-CJT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="per-R4-0qH" colorLabel="IBBuiltInLabel-Green">
                                 <rect key="frame" x="23" y="241" width="86" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,6 +150,16 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAH-C7-bcp" colorLabel="IBBuiltInLabel-Green">
+                                <rect key="frame" x="305" y="240" width="86" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.68650386959999998" blue="0.13020897349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <state key="normal" title="🕷"/>
+                                <connections>
+                                    <action selector="cardTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0a-fP-CJT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

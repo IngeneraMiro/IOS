@@ -7,22 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, someMethodsDelegation {
+class CincentrationViewController: UIViewController, someMethodsDelegation {
     
+//   ViewController life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         game.delegate = self
         
     }
     
-    func updateScorePoints(newScorePoints: Int) {
-        score = newScorePoints
-    }
     
-    func updateFlippedCrdsCounter(counterIncrement: Int) {
-        flipCounter += counterIncrement
-    }
-    
+//    variables declaration
     lazy var game = Concentration(pair:(cardCollection.count+1)/2)
     
     var flipCounter = 0 {
@@ -35,23 +30,36 @@ class ViewController: UIViewController, someMethodsDelegation {
             scoreCounter.text = "score: \(score)"
         }
     }
+    var pictures = Theme.getRandomTheme()
     
+    var emoji = [Int:String]()
+    
+    
+    
+//      @IBOutlets
+    @IBOutlet var cardCollection: [UIButton]!
+    @IBOutlet weak var scoreCounter: UILabel!
     @IBOutlet weak var flipCardLable: UILabel!
     
-    @IBOutlet weak var scoreCounter: UILabel!    
-    
+//    @IBActions
     @IBAction func restartTheGame(_ sender: UIButton) {
         game.gameRestart()
     }
-    
-    @IBOutlet var cardCollection: [UIButton]!
-    
     @IBAction func cardTouch(_ sender: UIButton) {
         if let cardNumber = cardCollection.firstIndex(of: sender){
             game.getCard(at: cardNumber)
         }else{
             print("there is a bug - no such card in collection")
         }
+    }
+    
+//    finctions
+    func updateScorePoints(newScorePoints: Int) {
+        score = newScorePoints
+    }
+    
+    func updateFlippedCrdsCounter(counterIncrement: Int) {
+        flipCounter += counterIncrement
     }
     
     func changeViewByModel(){
@@ -74,10 +82,6 @@ class ViewController: UIViewController, someMethodsDelegation {
         flipCounter = 0
         score = 0
     }
-    
-    var pictures = Theme.getRandomTheme()
-    
-    var emoji = [Int:String]()
     
     func emojiForCard(for card: Card) -> String {
         if emoji[card.cardUniqueId] == nil, !pictures.isEmpty {
