@@ -18,28 +18,32 @@ class Concentration {
     
     func getCard(at index: Int){
         if !cards[index].cardIsMatched{
-            if let matchIndex = indexOfAlreadyOpenedCard, matchIndex != index{
-                if cards[matchIndex].cardUniqueId == cards[index].cardUniqueId{
-                    cards[matchIndex].cardIsMatched = true
+            //   if picked card is not matched
+            if let matchedIndex = indexOfAlreadyOpenedCard, matchedIndex != index{
+                //  if we alredy have one card flipped
+                if cards[matchedIndex].cardUniqueId == cards[index].cardUniqueId{
+                    //  if alredy fliped and now fliped cars match
+                    cards[matchedIndex].cardIsMatched = true
                     cards[index].cardIsMatched = true
                     score += 2
                     alreadyFlippedCards.remove(cards[index].cardUniqueId)
                     firstFlippedCard = nil
                     secondFlippedCard = nil
                 }else{
+                    //     if alredy fliped and now fliped cars don't match
                     if let firstRounded = firstFlippedCard{
                         score += alreadyFlippedCards.contains(firstRounded) ? -1 : 0
                         score += alreadyFlippedCards.contains(secondFlippedCard!) ? -1 : 0
-                        score += alreadyFlippedCards.contains(cards[matchIndex].cardUniqueId) ? -1 : 0
+                        score += alreadyFlippedCards.contains(cards[matchedIndex].cardUniqueId) ? -1 : 0
                         score += alreadyFlippedCards.contains(cards[index].cardUniqueId) ? -1 : 0
                         alreadyFlippedCards.insert(firstRounded)
                         alreadyFlippedCards.insert(secondFlippedCard!)
-                        alreadyFlippedCards.insert(cards[matchIndex].cardUniqueId)
+                        alreadyFlippedCards.insert(cards[matchedIndex].cardUniqueId)
                         alreadyFlippedCards.insert(cards[index].cardUniqueId)
                         firstFlippedCard = nil
                         secondFlippedCard = nil
                     }else{
-                        firstFlippedCard = cards[matchIndex].cardUniqueId
+                        firstFlippedCard = cards[matchedIndex].cardUniqueId
                         secondFlippedCard = cards[index].cardUniqueId
                     }
                 }
